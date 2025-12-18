@@ -1,0 +1,133 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'vazirmatn.medium';
+  src: url(../../fonts/Vazirmatn/static/Vazirmatn-Medium.ttf);
+}
+@font-face {
+  font-family: 'vazirmatn.regular';
+  src: url(../../fonts/Vazirmatn/static/Vazirmatn-Regular.ttf);
+}
+@font-face {
+  font-family: 'vazirmatn.semibold';
+  src: url(../../fonts/Vazirmatn/static/Vazirmatn-SemiBold.ttf);
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+  font-family: 'vazirmatn.medium', sans-serif;
+  background-color: #dcdfe3;
+}
+
+.table-container {
+  background-color: #ffffff;
+  padding: 36px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.table-title {
+  margin: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'vazirmatn.semibold';
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table thead {
+  background-color: white;
+  font-size: 16px;
+  border-bottom: 1px solid #a0ccf8;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 14px 12px;
+  text-align: right;
+}
+
+.transaction-table th {
+  color: #6b7580;
+  font-weight: 500;
+}
+
+.transaction-table tbody tr td {
+  font-size: 16px;
+  color: #242d35;
+}
+
+.amount {
+  font-weight: 500;
+}
+
+.amount.positive {
+  color: #3ebd93;
+}
+
+.amount.negative {
+  color: #ef4e4e;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #242d35;
+  font-family: 'vazirmatn.regular';
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .transaction-table thead {
+    display: none;
+  }
+
+  .transaction-table tbody tr {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 8px 4px;
+    gap: 1px;
+  }
+
+  .transaction-table tbody td.date-col,
+  .transaction-table tbody td.status {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-bottom: 5px;
+  }
+
+  .transaction-table tbody td.amount.positive,
+  .transaction-table tbody td.amount.negative {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .transaction-table tbody td.amount.positive:empty,
+  .transaction-table tbody td.amount.negative:empty {
+    display: none;
+  }
+}
