@@ -23,10 +23,8 @@ function TransactionTable() {
 
             return (
               <tr key={item.id} className="transaction-row">
-                {/* ستون راست: تاریخ */}
                 <td className="date-col">{faDate}</td>
 
-                {/* ستون چپ: درآمد یا هزینه */}
                 <td className="amount positive">
                   {item.income > 0
                     ? `${item.income.toLocaleString('fa-IR')}+`
@@ -38,7 +36,6 @@ function TransactionTable() {
                     : ''}
                 </td>
 
-                {/* ستون راست: توضیحات */}
                 <td className="status">{item.description}</td>
               </tr>
             )
