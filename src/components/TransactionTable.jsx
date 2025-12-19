@@ -1,7 +1,6 @@
 import './TransactionTable.css'
-import { transAction } from '../data/transaction'
 
-function TransactionTable() {
+function TransactionTable({ transactions }) {
   return (
     <div className="table-container">
       <h2 className="table-title">تراکنش‌ها</h2>
@@ -16,7 +15,7 @@ function TransactionTable() {
           </tr>
         </thead>
         <tbody>
-          {transAction.map((item) => {
+          {transactions.map((item) => {
             const faDate = item.date.replace(/\d/g, (d) =>
               String.fromCharCode(d.charCodeAt(0) + 1728)
             )
