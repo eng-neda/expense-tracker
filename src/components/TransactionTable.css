@@ -21,7 +21,7 @@
 body {
   direction: rtl;
   text-align: right;
-  font-family: 'vazirmatn.medium', sans-serif;
+  font-family: 'vazirmatn.medium', sans-serif, 'vazirmatn.regular';
   background-color: #dcdfe3;
 }
 
