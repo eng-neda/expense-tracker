@@ -103,8 +103,8 @@ body {
     margin-bottom: 10px;
     background-color: #f8f9fa;
     border-radius: 8px;
-    padding: 8px 4px;
-    gap: 1px;
+    padding: 8px 12px;
+    gap: 4px;
   }
 
   .transaction-table tbody td.date-col,
@@ -118,14 +118,24 @@ body {
 
   .transaction-table tbody td.amount.positive,
   .transaction-table tbody td.amount.negative {
-    width: 40%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    width: auto;
     text-align: left;
     font-weight: 500;
     font-size: 16px;
   }
 
+  .transaction-table tbody td.amount.positive::after,
+  .transaction-table tbody td.amount.negative::after {
+    content: 'تومان';
+    font-size: 16px;
+    color: #6b7580;
+    white-space: nowrap;
+  }
   .transaction-table tbody td.amount.positive:empty,
   .transaction-table tbody td.amount.negative:empty {
     display: none;
