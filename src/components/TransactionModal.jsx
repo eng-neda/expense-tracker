@@ -1,4 +1,5 @@
 import AddTransactionForm from './Transactionform.jsx'
+import './TransactionModal.css'
 
 function AddTransactionModal({ onClose, onAddTransaction }) {
   return (

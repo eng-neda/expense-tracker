@@ -2,27 +2,64 @@ import './TransactionTable.css'
 import { renderTransactions } from '../helpers/transactionHelpers.jsx'
 import PlusIcon from '../../fonts/plus.svg'
 
-function TransactionTable({ transactions }) {
+function TransactionTable({ transactions, onOpenModal }) {
   return (
     <div className="table-container">
       <div className="title">
         <h2 className="table-title">تراکنش‌ها</h2>
-        <button className="btn-1">
+        <button className="btn-1" onClick={onOpenModal}>
           <img src={PlusIcon} alt="افزودن" className="btn-icon" />
           افزودن تراکنش‌ها
         </button>
       </div>
 
       <table className="transaction-table">
-        <thead>
-          <tr>
-            <th>تاریخ</th>
-            <th>درآمد (تومان) </th>
-            <th>هزینه (تومان)</th>
-            <th>شرح</th>
-          </tr>
-        </thead>
-        <tbody>{renderTransactions(transactions)}</tbody>
+        {transactions.length > 0 && (
+          <thead>
+            <tr>
+              <th>تاریخ</th>
+              <th>درآمد (تومان)</th>
+              <th>هزینه (تومان)</th>
+              <th>شرح</th>
+              <th></th>
+            </tr>
+          </thead>
+        )}
+
+        <tbody>
+          {transactions.length === 0 ? (
+            <tr>
+              <td
+                colSpan="5"
+                style={{
+                  textAlign: 'center',
+                  padding: '20px',
+                  color: '#6B7580',
+                  fontSize: '16px',
+                }}
+              >
+                <div style={{ marginBottom: '3px', display: 'inline-block' }}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height={20}
+                    width={20}
+                    stroke="#6B7580"
+                    strokeWidth={1.5}
+                  >
+                    <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" />
+                    <path d="M12 7v6" strokeLinecap="round" />
+                    <circle cx="12" cy="16" r=".5" fill="#6B7580" />
+                  </svg>
+                </div>
+                <div>شما هنوز تراکنشی وارد نکرده‌اید</div>
+              </td>
+            </tr>
+          ) : (
+            renderTransactions(transactions)
+          )}
+        </tbody>
       </table>
     </div>
   )

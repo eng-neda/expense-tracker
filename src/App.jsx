@@ -1,27 +1,29 @@
 import { useState } from 'react'
 import TransactionTable from './components/TransactionTable'
 import AddTransactionModal from './components/TransactionModal'
-import { transAction } from './data/transaction'
 
 function App() {
-  const [transactions, setTransactions] = useState(transAction)
+  const [transactions, setTransactions] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  return (
-    <div>
-      <button onClick={() => setIsModalOpen(true)}>افزودن تراکنش</button>
+  const addTransactionHandler = (newTransaction) => {
+    setTransactions((prev) => [newTransaction, ...prev])
+  }
 
-      <TransactionTable transactions={transactions} />
+  return (
+    <>
+      <TransactionTable
+        transactions={transactions}
+        onOpenModal={() => setIsModalOpen(true)}
+      />
 
       {isModalOpen && (
         <AddTransactionModal
           onClose={() => setIsModalOpen(false)}
-          onAddTransaction={(newTransaction) =>
-            setTransactions((prev) => [newTransaction, ...prev])
-          }
+          onAddTransaction={addTransactionHandler}
         />
       )}
-    </div>
+    </>
   )
 }
 

@@ -14,6 +14,9 @@ export function renderTransactions(transactions) {
           {item.outcome > 0 ? `${item.outcome.toLocaleString('fa-IR')}-` : ''}
         </td>
         <td className="status">{item.description}</td>
+        <td className="action-col">
+          <span className="icon-trash"></span>
+        </td>
       </tr>
     )
   })
