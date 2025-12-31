@@ -10,11 +10,16 @@ function App() {
     setTransactions((prev) => [newTransaction, ...prev])
   }
 
+  const deleteTransactionHandler = (id) => {
+    setTransactions((prev) => prev.filter((item) => item.id !== id))
+  }
+
   return (
     <>
       <TransactionTable
         transactions={transactions}
         onOpenModal={() => setIsModalOpen(true)}
+        onDeleteTransaction={deleteTransactionHandler}
       />
 
       {isModalOpen && (

@@ -2,7 +2,7 @@ import './TransactionTable.css'
 import { renderTransactions } from '../helpers/transactionHelpers.jsx'
 import PlusIcon from '../../fonts/plus.svg'
 
-function TransactionTable({ transactions, onOpenModal }) {
+function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
   return (
     <div className="table-container">
       <div className="title">
@@ -57,7 +57,7 @@ function TransactionTable({ transactions, onOpenModal }) {
               </td>
             </tr>
           ) : (
-            renderTransactions(transactions)
+            renderTransactions(transactions, onDeleteTransaction)
           )}
         </tbody>
       </table>

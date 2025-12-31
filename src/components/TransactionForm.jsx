@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './TransactionModal.css' // اگر میخوای فرم هم CSS داشته باشه
+import './TransactionModal.css'
 
 function AddTransactionForm({ onClose, onAddTransaction }) {
   const [title, setTitle] = useState('')

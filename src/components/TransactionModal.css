@@ -125,3 +125,21 @@
 .btn-cancel:hover {
   background-color: #f5f6f8;
 }
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .modal {
+    width: 412px;
+    height: 388px;
+  }
+
+  .modal-actions {
+    justify-content: space-between;
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    width: 182px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
