@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './TransactionModal.css' // اگر میخوای فرم هم CSS داشته باشه
 
 function AddTransactionForm({ onClose, onAddTransaction }) {
   const [title, setTitle] = useState('')
@@ -8,7 +9,6 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-
     const newTransaction = {
       id: Date.now(),
       title,
@@ -16,42 +16,83 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       income: type === 'income' ? Number(amount) : null,
       outcome: type === 'outcome' ? Number(amount) : null,
     }
-
     onAddTransaction(newTransaction)
     onClose()
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="شرح"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+    <form className="modal-form" onSubmit={submitHandler}>
+      <div className="modal-header">
+        <h3 className="modal-title">افزودن تراکنش</h3>
+        <button type="button" className="modal-close" onClick={onClose}>
+          ×
+        </button>
+      </div>
 
-      <input
-        type="number"
-        placeholder="مبلغ"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
+      <div className="form-group">
+        <label htmlFor="date">تاریخ</label>
+        <input
+          type="date"
+          id="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="amount">مبلغ(تومان)</label>
+        <input
+          type="number"
+          id="amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </div>
 
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="income">درآمد</option>
-        <option value="outcome">هزینه</option>
-      </select>
+      <div className="form-group">
+        <label>نوع تراکنش</label>
+        <div className="radio-group">
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="income"
+              checked={type === 'income'}
+              onChange={(e) => setType(e.target.value)}
+            />
+            درآمد
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="outcome"
+              checked={type === 'outcome'}
+              onChange={(e) => setType(e.target.value)}
+            />
+            هزینه
+          </label>
+        </div>
+      </div>
 
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
+      <div className="form-group">
+        <label htmlFor="title">شرح</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
 
-      <button type="submit">ثبت</button>
-      <button type="button" onClick={onClose}>
-        انصراف
-      </button>
+      <div className="modal-actions">
+        <button type="button" className="btn-cancel" onClick={onClose}>
+          انصراف
+        </button>
+
+        <button type="submit" className="btn-submit">
+          ثبت
+        </button>
+      </div>
     </form>
   )
 }
