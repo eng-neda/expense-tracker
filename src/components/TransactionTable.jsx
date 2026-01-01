@@ -28,7 +28,7 @@ function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
 
         <tbody>
           {transactions.length === 0 ? (
-            <tr>
+            <tr className="empty-state">
               <td
                 colSpan="5"
                 style={{

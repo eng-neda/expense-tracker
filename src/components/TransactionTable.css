@@ -67,6 +67,7 @@ body {
   justify-content: center;
   margin: 40px auto;
   width: 100%;
+  height: 875px;
 }
 
 .title {
@@ -114,10 +115,9 @@ body {
 }
 .transaction-table {
   width: 100%;
-  height: 875px;
+  height: auto;
   margin: 0 auto;
-  border-collapse: separate;
-  border-spacing: 0 12px;
+  border-collapse: collapse;
 }
 .transaction-table thead {
   border-bottom: 1px solid #a0ccf8;
@@ -144,6 +144,10 @@ body {
   color: #242d35;
 }
 
+.transaction-table tbody tr {
+  display: table-row;
+}
+
 .amount {
   font-weight: 500;
 }
@@ -164,14 +168,29 @@ body {
   color: #242d35;
   font-family: 'vazirmatn.regular';
 }
+
+.empty-state {
+  height: 100%;
+}
+
+.empty-state td {
+  height: 100%;
+  min-height: 500px;
+  padding-top: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .transaction-table thead {
     display: none;
   }
 
-  .transaction-table tbody tr {
-    display: flex !important;
+  .transaction-table tbody tr:not(.empty-state) {
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -211,8 +230,24 @@ body {
     color: #6b7580;
     white-space: nowrap;
   }
+
   .transaction-table tbody td.amount.positive:empty,
   .transaction-table tbody td.amount.negative:empty {
     display: none;
+  }
+
+  .transaction-table {
+    height: calc(100vh - 140px);
+  }
+
+  .empty-state td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: calc(100vh - 200px);
+    text-align: center;
+    background: transparent;
+    margin: 0;
   }
 }

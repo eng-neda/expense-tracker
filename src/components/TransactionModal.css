@@ -125,6 +125,14 @@
 .btn-cancel:hover {
   background-color: #f5f6f8;
 }
+
+.date-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
 /* Mobile responsive */
 @media (max-width: 480px) {
   .modal {
