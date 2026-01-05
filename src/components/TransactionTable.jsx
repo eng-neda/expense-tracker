@@ -1,45 +1,56 @@
 import './TransactionTable.css'
-import { transAction } from '../data/transaction'
+import { renderTransactions } from '../helpers/transactionHelpers.jsx'
+import PlusIcon from '../../fonts/plus.svg'
 
-function TransactionTable() {
+function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
   return (
     <div className="table-container">
-      <h2 className="table-title">تراکنش‌ها</h2>
+      <div className="title">
+        <h2 className="table-title">تراکنش‌ها</h2>
+        <button className="btn-blue" onClick={onOpenModal}>
+          <img src={PlusIcon} alt="افزودن" className="btn-icon" />
+          افزودن تراکنش‌ها
+        </button>
+      </div>
 
       <table className="transaction-table">
-        <thead>
-          <tr>
-            <th>تاریخ</th>
-            <th>درآمد (تومان) </th>
-            <th>هزینه (تومان)</th>
-            <th>شرح</th>
-          </tr>
-        </thead>
+        {transactions.length > 0 && (
+          <thead>
+            <tr>
+              <th>تاریخ</th>
+              <th>درآمد (تومان)</th>
+              <th>هزینه (تومان)</th>
+              <th>شرح</th>
+              <th></th>
+            </tr>
+          </thead>
+        )}
+
         <tbody>
-          {transAction.map((item) => {
-            const faDate = item.date.replace(/\d/g, (d) =>
-              String.fromCharCode(d.charCodeAt(0) + 1728)
-            )
-
-            return (
-              <tr key={item.id} className="transaction-row">
-                <td className="date-col">{faDate}</td>
-
-                <td className="amount positive">
-                  {item.income > 0
-                    ? `${item.income.toLocaleString('fa-IR')}+`
-                    : ''}
-                </td>
-                <td className="amount negative">
-                  {item.outcome > 0
-                    ? `${item.outcome.toLocaleString('fa-IR')}-`
-                    : ''}
-                </td>
-
-                <td className="status">{item.description}</td>
-              </tr>
-            )
-          })}
+          {transactions.length === 0 ? (
+            <tr className="empty-state">
+              <td colSpan="5">
+                <div className="empty-state-content">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height={20}
+                    width={20}
+                    stroke="#6B7580"
+                    strokeWidth={1.5}
+                  >
+                    <path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0 -20 0" />
+                    <path d="M12 7v6" strokeLinecap="round" />
+                    <circle cx="12" cy="16" r=".5" fill="#6B7580" />
+                  </svg>
+                  <div>شما هنوز تراکنشی وارد نکرده‌اید</div>
+                </div>
+              </td>
+            </tr>
+          ) : (
+            renderTransactions(transactions, onDeleteTransaction)
+          )}
         </tbody>
       </table>
     </div>
