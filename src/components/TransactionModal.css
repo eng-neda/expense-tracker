@@ -131,6 +131,12 @@
   align-items: center;
   width: 100%;
 }
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-right: 4px;
+  display: block;
+}
 
 /* Mobile responsive */
 @media (max-width: 480px) {

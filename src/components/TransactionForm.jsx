@@ -6,9 +6,23 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('income')
   const [date, setDate] = useState('')
+  const [errors, setErrors] = useState({})
 
   const submitHandler = (e) => {
     e.preventDefault()
+
+    //validation form//
+    const newErrors = {}
+    if (!date) newErrors.date = 'تاریخ الزامی است'
+    if (!amount) newErrors.amount = 'مبلغ الزامی است'
+    else if (Number(amount) <= 0)
+      newErrors.amount = 'مبلغ باید بیشتر از صفر باشد'
+    if (!title.trim()) newErrors.title = 'شرح تراکنش الزامی است'
+
+    setErrors(newErrors)
+
+    if (Object.keys(newErrors).length > 0) return
+
     const newTransaction = {
       id: Date.now(),
       title,
@@ -16,6 +30,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       income: type === 'income' ? Number(amount) : null,
       outcome: type === 'outcome' ? Number(amount) : null,
     }
+
     onAddTransaction(newTransaction)
     onClose()
   }
@@ -37,7 +52,9 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
+        {errors.date && <span className="error-text">{errors.date}</span>}
       </div>
+
       <div className="form-group">
         <label htmlFor="amount">مبلغ(تومان)</label>
         <input
@@ -46,6 +63,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
+        {errors.amount && <span className="error-text">{errors.amount}</span>}
       </div>
 
       <div className="form-group">
@@ -82,6 +100,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        {errors.title && <span className="error-text">{errors.title}</span>}
       </div>
 
       <div className="modal-actions">
