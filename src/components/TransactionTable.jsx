@@ -29,16 +29,8 @@ function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
         <tbody>
           {transactions.length === 0 ? (
             <tr className="empty-state">
-              <td
-                colSpan="5"
-                style={{
-                  textAlign: 'center',
-                  padding: '20px',
-                  color: '#6B7580',
-                  fontSize: '16px',
-                }}
-              >
-                <div style={{ marginBottom: '3px', display: 'inline-block' }}>
+              <td colSpan="5">
+                <div className="empty-state-content">
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -52,8 +44,8 @@ function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
                     <path d="M12 7v6" strokeLinecap="round" />
                     <circle cx="12" cy="16" r=".5" fill="#6B7580" />
                   </svg>
+                  <div>شما هنوز تراکنشی وارد نکرده‌اید</div>
                 </div>
-                <div>شما هنوز تراکنشی وارد نکرده‌اید</div>
               </td>
             </tr>
           ) : (
