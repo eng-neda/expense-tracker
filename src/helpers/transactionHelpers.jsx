@@ -1,3 +1,9 @@
+function formatAmount(amount, type) {
+  if (!amount || amount <= 0) return ''
+  const formatted = amount.toLocaleString('fa-IR')
+  return type === 'income' ? `${formatted}+` : `${formatted}-`
+}
+
 export function renderTransactions(transactions, onDeleteTransaction) {
   return transactions.map((item) => {
     const faDate = item.date.replace(/\d/g, (d) =>
@@ -9,11 +15,11 @@ export function renderTransactions(transactions, onDeleteTransaction) {
         <td className="date-col">{faDate}</td>
 
         <td className="amount positive">
-          {item.income > 0 ? `${item.income.toLocaleString('fa-IR')}+` : ''}
+          {formatAmount(item.income, 'income')}
         </td>
 
         <td className="amount negative">
-          {item.outcome > 0 ? `${item.outcome.toLocaleString('fa-IR')}-` : ''}
+          {formatAmount(item.outcome, 'outcome')}
         </td>
 
         <td className="status">{item.title}</td>
