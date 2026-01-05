@@ -7,7 +7,7 @@ function TransactionTable({ transactions, onOpenModal, onDeleteTransaction }) {
     <div className="table-container">
       <div className="title">
         <h2 className="table-title">تراکنش‌ها</h2>
-        <button className="btn-1" onClick={onOpenModal}>
+        <button className="btn-blue" onClick={onOpenModal}>
           <img src={PlusIcon} alt="افزودن" className="btn-icon" />
           افزودن تراکنش‌ها
         </button>
