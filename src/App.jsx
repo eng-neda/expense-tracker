@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './App.css'
 import TransactionTable from './components/TransactionTable'
 import AddTransactionModal from './components/TransactionModal'
 
