@@ -1,11 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import TransactionTable from './components/TransactionTable'
 import AddTransactionModal from './components/TransactionModal'
 
 function App() {
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState(() => {
+    const storedData = localStorage.getItem('expenseTrackerData')
+    return storedData ? JSON.parse(storedData) : []
+  })
+
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('expenseTrackerData', JSON.stringify(transactions))
+  }, [transactions])
 
   const addTransactionHandler = (newTransaction) => {
     setTransactions((prev) => [newTransaction, ...prev])
