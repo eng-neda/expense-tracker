@@ -27,8 +27,15 @@ export function renderTransactions(transactions, onDeleteTransaction) {
         <td className="action-col">
           <span
             className="icon-trash"
-            onClick={() => onDeleteTransaction(item.id)}
             title="حذف تراکنش"
+            onClick={() => {
+              const isConfirmed = window.confirm(
+                'آیا مطمئن هستید که می‌خواهید این تراکنش حذف شود؟'
+              )
+              if (isConfirmed) {
+                onDeleteTransaction(item.id)
+              }
+            }}
           ></span>
         </td>
       </tr>
