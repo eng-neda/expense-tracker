@@ -1,14 +1,11 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import './TransactionModal.css'
-import CalendarIcon from '../icons/CalendarIcon'
 
 function AddTransactionForm({ onClose, onAddTransaction }) {
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('income')
   const [date, setDate] = useState('')
-
-  const dateInputRef = useRef(null)
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -17,8 +14,8 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       id: Date.now(),
       title,
       date,
-      income: type === 'income' ? Number(amount) : null,
-      outcome: type === 'outcome' ? Number(amount) : null,
+      type: 'income' | 'outcome',
+      amount,
     }
 
     onAddTransaction(newTransaction)
@@ -40,19 +37,11 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           <input
             type="date"
             id="date"
-            ref={dateInputRef}
+            onClick={(e) => e.currentTarget.showPicker()}
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
           />
-          <span
-            className="calendar-icon"
-            onClick={() =>
-              dateInputRef.current && dateInputRef.current.showPicker?.()
-            }
-          >
-            <CalendarIcon />
-          </span>
         </div>
       </div>
 
