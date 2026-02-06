@@ -1,6 +1,8 @@
 function formatAmount(amount, type) {
-  if (!amount || amount <= 0) return ''
-  const formatted = amount.toLocaleString('fa-IR')
+  const num = Number(amount)
+  if (!num || num <= 0) return ''
+
+  const formatted = num.toLocaleString('fa-IR')
   return type === 'income' ? `${formatted}+` : `${formatted}-`
 }
 
@@ -15,11 +17,11 @@ export function renderTransactions(transactions, onDeleteTransaction) {
         <td className="date-col">{faDate}</td>
 
         <td className="amount positive">
-          {formatAmount(item.income, 'income')}
+          {item.type === 'income' ? formatAmount(item.amount, 'income') : ''}
         </td>
 
         <td className="amount negative">
-          {formatAmount(item.outcome, 'outcome')}
+          {item.type === 'outcome' ? formatAmount(item.amount, 'outcome') : ''}
         </td>
 
         <td className="status">{item.title}</td>

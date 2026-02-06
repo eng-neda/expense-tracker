@@ -14,7 +14,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       id: Date.now(),
       title,
       date,
-      type: 'income' | 'outcome',
+      type: type,
       amount,
     }
 
