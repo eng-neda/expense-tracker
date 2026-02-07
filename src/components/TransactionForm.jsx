@@ -6,29 +6,16 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('income')
   const [date, setDate] = useState('')
-  const [errors, setErrors] = useState({})
 
   const submitHandler = (e) => {
     e.preventDefault()
-
-    //validation form//
-    const newErrors = {}
-    if (!date) newErrors.date = 'تاریخ الزامی است'
-    if (!amount) newErrors.amount = 'مبلغ الزامی است'
-    else if (Number(amount) <= 0)
-      newErrors.amount = 'مبلغ باید بیشتر از صفر باشد'
-    if (!title.trim()) newErrors.title = 'شرح تراکنش الزامی است'
-
-    setErrors(newErrors)
-
-    if (Object.keys(newErrors).length > 0) return
 
     const newTransaction = {
       id: Date.now(),
       title,
       date,
-      income: type === 'income' ? Number(amount) : null,
-      outcome: type === 'outcome' ? Number(amount) : null,
+      type: type,
+      amount,
     }
 
     onAddTransaction(newTransaction)
@@ -46,13 +33,16 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
 
       <div className="form-group">
         <label htmlFor="date">تاریخ</label>
-        <input
-          type="date"
-          id="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        {errors.date && <span className="error-text">{errors.date}</span>}
+        <div className="date-input">
+          <input
+            type="date"
+            id="date"
+            onClick={(e) => e.currentTarget.showPicker()}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
       </div>
 
       <div className="form-group">
@@ -62,8 +52,9 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           id="amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          required
+          min={1}
         />
-        {errors.amount && <span className="error-text">{errors.amount}</span>}
       </div>
 
       <div className="form-group">
@@ -76,6 +67,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
               value="income"
               checked={type === 'income'}
               onChange={(e) => setType(e.target.value)}
+              required
             />
             درآمد
           </label>
@@ -86,6 +78,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
               value="outcome"
               checked={type === 'outcome'}
               onChange={(e) => setType(e.target.value)}
+              required
             />
             هزینه
           </label>
@@ -99,15 +92,14 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
-        {errors.title && <span className="error-text">{errors.title}</span>}
       </div>
 
       <div className="modal-actions">
         <button type="button" className="btn-cancel" onClick={onClose}>
           انصراف
         </button>
-
         <button type="submit" className="btn-submit">
           ثبت
         </button>
