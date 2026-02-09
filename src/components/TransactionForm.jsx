@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './TransactionModal.css'
+import Calendar from '../../Photos/Calendar.png'
 
 function AddTransactionForm({ onClose, onAddTransaction }) {
   const [title, setTitle] = useState('')
@@ -42,6 +43,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
             onChange={(e) => setDate(e.target.value)}
             required
           />
+          <img src={Calendar} alt="Calendar" className="Calendar-icon" />
         </div>
       </div>
 
