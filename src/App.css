@@ -68,6 +68,22 @@ body {
   color: #242d35;
 }
 
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  gap: 20px;
+
+  .notfound-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .transaction-table thead {
     display: none;
@@ -80,5 +96,8 @@ body {
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 10px;
+  }
+  .dashboard-wrapper {
+    padding: 36px 24px;
   }
 }

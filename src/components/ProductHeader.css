@@ -32,13 +32,27 @@
   background-color: #0c2bc7;
   color: white;
 }
-.nav-link:hover {
-  background-color: #0c2bc7;
-  color: white;
-}
 
 .logo {
   height: 50px;
   margin-left: 16px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-link {
+    margin-right: 2px;
+  }
+
+  .logo {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
