@@ -48,6 +48,25 @@ body {
 .text-semibold {
   font-weight: 600;
 }
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.dashboard-card {
+  width: 816px;
+  height: 120px;
+  background-color: white;
+  padding: 36px 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: right;
+  font-size: 20px;
+  font-weight: 600;
+  color: #242d35;
+}
 
 @media (max-width: 768px) {
   .transaction-table thead {
