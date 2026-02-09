@@ -6,14 +6,17 @@ function ProductHeader() {
   return (
     <header className="header">
       <nav className="nav">
-        <img src={logo} alt="لوگو" className="logo" />
-        <NavLink to="/dashboard" className="nav-link">
-          داشبورد
-        </NavLink>
+        <div className="nav-right">
+          <img src={logo} alt="لوگو" className="logo" />
 
-        <NavLink to="/expenses" className="nav-link">
-          لیست هزینه‌ها
-        </NavLink>
+          <NavLink to="/dashboard" className="nav-link">
+            داشبورد
+          </NavLink>
+
+          <NavLink to="/expenses" className="nav-link">
+            لیست هزینه‌ها
+          </NavLink>
+        </div>
       </nav>
     </header>
   )
