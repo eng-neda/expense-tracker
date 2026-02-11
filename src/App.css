@@ -8,29 +8,6 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'icomoon';
-  src: url('/fonts/icomoon.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
-[class^='icon-'],
-[class*=' icon-'] {
-  font-family: 'icomoon' !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-trash::before {
-  content: '\e902';
-}
-
-.icon-plus-square-o::before {
-  content: '\e900';
-}
-
 body {
   direction: rtl;
   text-align: right;
@@ -76,12 +53,12 @@ body {
   height: 80vh;
   text-align: center;
   gap: 20px;
+}
 
-  .notfound-image {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-  }
+.notfound-image {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 768px) {
