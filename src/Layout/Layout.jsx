@@ -4,9 +4,9 @@ import '../App.css'
 
 function Layout() {
   return (
-    <div className="app-container">
+    <div>
       <ProductHeader />
-      <main className="page-content">
+      <main>
         <Outlet />
       </main>
     </div>
