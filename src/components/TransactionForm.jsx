@@ -15,7 +15,7 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       id: Date.now(),
       title,
       date,
-      type: type,
+      type,
       amount,
     }
 
