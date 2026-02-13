@@ -208,10 +208,6 @@
     display: none;
   }
 
-  .transaction-table {
-    height: calc(100vh - 140px);
-  }
-
   .empty-state td {
     display: flex;
     align-items: center;
