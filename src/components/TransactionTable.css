@@ -1,35 +1,13 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?i0z67u');
-  src:
-    url('fonts/icomoon.eot?i0z67u#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?i0z67u') format('truetype'),
-    url('fonts/icomoon.woff?i0z67u') format('woff'),
-    url('fonts/icomoon.svg?i0z67u#icomoon') format('svg');
+  src: url('fonts/icomoon.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
 }
 
-[class^='icon-'],
-[class*=' icon-'] {
-  font-family: 'icomoon' !important;
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-trash:before {
+.icon-trash::before {
+  font-family: 'icomoon';
   content: '\e902';
-}
-.icon-plus-square-o:before {
-  content: '\e900';
 }
 
 .table-container {
@@ -41,7 +19,7 @@
   justify-content: center;
   margin: 40px auto;
   width: 100%;
-  height: 875px;
+  height: auto;
 }
 
 .title {
@@ -55,7 +33,6 @@
   font-size: 20px;
   font-weight: 600;
   text-align: center;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .btn-blue {
@@ -104,14 +81,12 @@
   border-bottom: 1px solid #a0ccf8;
   background-color: white;
   font-size: 16px;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .transaction-table th,
 .transaction-table td {
   padding: 14px 12px;
   text-align: right;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .transaction-table th {
@@ -130,7 +105,6 @@
 
 .amount {
   font-weight: 500;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .amount.positive {
@@ -147,24 +121,20 @@
   font-size: 16px;
   font-weight: 400;
   color: #242d35;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .empty-state {
   height: 100%;
 }
-
 .empty-state td {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 300px;
-  padding-top: 15vh;
+  min-height: calc(100vh - 140px);
   text-align: center;
   color: #6b7580;
   font-size: 16px;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 .empty-state-content {
@@ -176,12 +146,17 @@
 .empty-state-content div {
   color: #6b7580;
   font-size: 16px;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 /* Responsive */
 
 @media (max-width: 768px) {
+  .table-container {
+    width: calc(100% - 32px);
+    margin: 20px auto;
+    padding: 20px 16px;
+    height: auto;
+  }
   .transaction-table thead {
     display: none;
   }
@@ -217,7 +192,6 @@
     width: auto;
     text-align: left;
     font-weight: 500;
-    font-family: 'Vazirmatn', sans-serif;
     font-size: 16px;
   }
 
@@ -232,10 +206,6 @@
   .transaction-table tbody td.amount.positive:empty,
   .transaction-table tbody td.amount.negative:empty {
     display: none;
-  }
-
-  .transaction-table {
-    height: calc(100vh - 140px);
   }
 
   .empty-state td {

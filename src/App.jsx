@@ -1,43 +1,22 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import TransactionTable from './components/TransactionTable'
-import AddTransactionModal from './components/TransactionModal'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+import Layout from './layout/Layout'
+import Dashboard from './Pages/Dashboard'
+import Expenses from './Pages/Expenses'
+import NotFound from './Pages/NotFound'
 
 function App() {
-  const [transactions, setTransactions] = useState(() => {
-    const storedData = localStorage.getItem('expenseTrackerData')
-    return storedData ? JSON.parse(storedData) : []
-  })
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  useEffect(() => {
-    localStorage.setItem('expenseTrackerData', JSON.stringify(transactions))
-  }, [transactions])
-
-  const addTransactionHandler = (newTransaction) => {
-    setTransactions((prev) => [newTransaction, ...prev])
-  }
-
-  const deleteTransactionHandler = (id) => {
-    setTransactions((prev) => prev.filter((item) => item.id !== id))
-  }
-
   return (
-    <>
-      <TransactionTable
-        transactions={transactions}
-        onOpenModal={() => setIsModalOpen(true)}
-        onDeleteTransaction={deleteTransactionHandler}
-      />
-
-      {isModalOpen && (
-        <AddTransactionModal
-          onClose={() => setIsModalOpen(false)}
-          onAddTransaction={addTransactionHandler}
-        />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/dashboard" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="expenses" element={<Expenses />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

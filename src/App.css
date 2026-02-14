@@ -8,33 +8,10 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'icomoon';
-  src: url('/fonts/icomoon.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
-[class^='icon-'],
-[class*=' icon-'] {
-  font-family: 'icomoon' !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-trash::before {
-  content: '\e902';
-}
-
-.icon-plus-square-o::before {
-  content: '\e900';
-}
-
 body {
   direction: rtl;
   text-align: right;
-  font-family: 'Vazirmatn-Medium', sans-serif;
+  font-family: 'Vazirmatn', sans-serif;
   background-color: #dcdfe3;
 }
 .text-regular {
@@ -47,6 +24,41 @@ body {
 
 .text-semibold {
   font-weight: 600;
+}
+.dashboard-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.dashboard-card {
+  width: 816px;
+  height: 120px;
+  background-color: white;
+  padding: 36px 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: right;
+  font-size: 20px;
+  font-weight: 600;
+  color: #242d35;
+}
+
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  gap: 20px;
+}
+
+.notfound-image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 768px) {
@@ -61,5 +73,8 @@ body {
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 10px;
+  }
+  .dashboard-wrapper {
+    padding: 36px 24px;
   }
 }
