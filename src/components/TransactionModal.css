@@ -164,10 +164,19 @@
 }
 
 /* Mobile responsive */
+
 @media (max-width: 480px) {
+  .modal-backdrop {
+    align-items: flex-end;
+  }
+
   .modal {
-    width: 412px;
-    height: 388px;
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    animation: slideUp 0.3s ease-out;
   }
 
   .modal-actions {
@@ -176,8 +185,17 @@
 
   .btn-submit,
   .btn-cancel {
-    width: 182px;
+    width: 48%;
     height: 40px;
     font-size: 16px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
