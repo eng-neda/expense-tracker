@@ -43,9 +43,11 @@ function TransactionTable({ onOpenModal }) {
             </tr>
           ) : (
             transactions.map((item) => {
-              const faDate = item.date.replace(/\d/g, (d) =>
-                String.fromCharCode(d.charCodeAt(0) + 1728)
-              )
+              const faDate = item.date
+                .replace(/-/g, '/')
+                .replace(/\d/g, (d) =>
+                  String.fromCharCode(d.charCodeAt(0) + 1728)
+                )
 
               return (
                 <tr key={item.id} className="transaction-row">
