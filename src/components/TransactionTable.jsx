@@ -1,7 +1,7 @@
 import './TransactionTable.css'
 import { useContext } from 'react'
 import { TransactionContext } from '../context/TransactionContext'
-import PlusIcon from '../../photos/plus.svg'
+import PlusIcon from '../../photos/Plus.svg'
 import DangerCircle from '../../photos/Danger Circle.png'
 import { formatAmount } from '../helpers/transactionHelpers.jsx'
 

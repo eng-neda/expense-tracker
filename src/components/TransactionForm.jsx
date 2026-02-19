@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import './TransactionModal.css'
-import Calendar from '../../Photos/Calendar.png'
+import Calendar from '../../photos/Calendar.png'
 import { TransactionContext } from '../context/TransactionContext.jsx'
 
 function AddTransactionForm({ onClose }) {

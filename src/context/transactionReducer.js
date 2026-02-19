@@ -12,6 +12,6 @@ export const transactionReducer = (state, action) => {
       )
 
     default:
-      return
+      return state
   }
 }
