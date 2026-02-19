@@ -125,13 +125,18 @@
 
 .empty-state {
   height: 100%;
+  margin: 0 auto;
 }
 .empty-state td {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: calc(100vh - 140px);
+  max-width: 816px;
+  min-height: 360px;
+  height: auto;
+  max-height: 950px;
+  padding: 36px 24px;
   text-align: center;
   color: #6b7580;
   font-size: 16px;
