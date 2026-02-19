@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import './TransactionModal.css'
 import Calendar from '../../Photos/Calendar.png'
-import { TransactionContext } from '../context/TransactionContext'
+import { TransactionContext } from '../context/TransactionContext.jsx'
 
 function AddTransactionForm({ onClose }) {
   const { dispatch } = useContext(TransactionContext)
