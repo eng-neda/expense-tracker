@@ -1,8 +1,8 @@
 import './TransactionTable.css'
 import { useContext } from 'react'
 import { TransactionContext } from '../context/TransactionContext'
-import PlusIcon from '../../photos/Plus.svg'
-import DangerCircle from '../../photos/Danger Circle.png'
+import PlusIcon from '../asset/photos/Plus.svg'
+import DangerCircle from '../asset/photos/Danger Circle.png'
 import { formatAmount } from '../helpers/transactionHelpers.jsx'
 
 function TransactionTable({ onOpenModal }) {

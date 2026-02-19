@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import './ProductHeader.css'
-import logo from '../../photos/Logo Placeholder.png'
+import logo from '../asset/photos/Logo Placeholder.png'
 
 function ProductHeader() {
   return (
