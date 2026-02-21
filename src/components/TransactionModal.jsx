@@ -1,14 +1,11 @@
 import AddTransactionForm from './TransactionForm.jsx'
 import './TransactionModal.css'
 
-function AddTransactionModal({ onClose, onAddTransaction }) {
+function AddTransactionModal({ onClose }) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <AddTransactionForm
-          onClose={onClose}
-          onAddTransaction={onAddTransaction}
-        />
+        <AddTransactionForm onClose={onClose} />
       </div>
     </div>
   )

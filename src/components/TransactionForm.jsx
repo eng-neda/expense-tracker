@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import './TransactionModal.css'
-import Calendar from '../../Photos/Calendar.png'
+import Calendar from '../asset/photos/Calendar.png'
+import { TransactionContext } from '../context/TransactionContext.jsx'
 
-function AddTransactionForm({ onClose, onAddTransaction }) {
+function AddTransactionForm({ onClose }) {
+  const { dispatch } = useContext(TransactionContext)
+
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
   const [type, setType] = useState('income')
@@ -16,10 +19,14 @@ function AddTransactionForm({ onClose, onAddTransaction }) {
       title,
       date,
       type,
-      amount,
+      amount: Number(amount),
     }
 
-    onAddTransaction(newTransaction)
+    dispatch({
+      type: 'ADD_TRANSACTION',
+      payload: newTransaction,
+    })
+
     onClose()
   }
 
