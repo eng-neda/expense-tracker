@@ -57,7 +57,7 @@ function Dashboard() {
       <div className="chart-box">
         <h3>نسبت درآمد به هزینه</h3>
 
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200}>
           <PieChart>
             <Pie data={chartData} dataKey="value" outerRadius={100}>
               <Cell fill="#4CAF50" />
